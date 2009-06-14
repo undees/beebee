@@ -26,11 +26,20 @@
 		NSString *soundFilePath =
 			[[NSBundle mainBundle] pathForResource:string
 											ofType:@"aiff"];
+		NSURL *fileURL;
 
-		NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+		@try {
+			fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+		}
+		@catch (NSException *exception) {
+			return NO;
+		}
 
 		player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
 														error:nil];
+		if (!player)
+			return NO;
+		
 		[fileURL release];
 		
 		[players setObject:player forKey:string];
