@@ -67,8 +67,8 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">B</string>
-						<object class="NSFont" key="IBUIFont" id="865137291">
-							<string key="NSName">Helvetica</string>
+						<object class="NSFont" key="IBUIFont" id="193926719">
+							<string key="NSName">ArialRoundedMTBold</string>
 							<double key="NSSize">1.440000e+02</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -91,7 +91,7 @@
 						<float key="IBUIAlpha">0.000000e+00</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">B</string>
-						<reference key="IBUIFont" ref="865137291"/>
+						<reference key="IBUIFont" ref="193926719"/>
 						<reference key="IBUITextColor" ref="376107020"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
