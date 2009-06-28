@@ -79,11 +79,16 @@
 	CFStringRef audioRoute;
 	UInt32 propertySize = sizeof(CFStringRef);	
 
-	AudioSessionGetProperty(kAudioSessionProperty_AudioRoute,
-							&propertySize,
-							&audioRoute);
-
-	usingHeadphones = (kCFCompareEqualTo != CFStringCompare(audioRoute, (CFStringRef)@"Speaker", 0));
+	if (0 == AudioSessionGetProperty(kAudioSessionProperty_AudioRoute,
+									 &propertySize,
+									 &audioRoute))
+	{
+		usingHeadphones = (kCFCompareEqualTo != CFStringCompare(audioRoute, (CFStringRef)@"Speaker", 0));
+	}
+	else
+	{
+		usingHeadphones = NO;
+	}
 	
 	if (usingHeadphones)
 	{
