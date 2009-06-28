@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* BeeBeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* BeeBeeViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* BeeBeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BeeBeeViewController.m */; };
+		D54FE04A0FF80C700051B11B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D54FE0490FF80C700051B11B /* AudioToolbox.framework */; };
 		DF4B992E0FE4B22A00E7CA40 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DF4B992D0FE4B22A00E7CA40 /* Icon.png */; };
 		DFB5CCA40FE0D03500B0A970 /* a.aiff in Resources */ = {isa = PBXBuildFile; fileRef = DFB5CC8A0FE0D03500B0A970 /* a.aiff */; };
 		DFB5CCA50FE0D03500B0A970 /* b.aiff in Resources */ = {isa = PBXBuildFile; fileRef = DFB5CC8B0FE0D03500B0A970 /* b.aiff */; };
@@ -59,6 +60,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BeeBee_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeBee_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54FE0490FF80C700051B11B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DF4B992D0FE4B22A00E7CA40 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		DFB5CC8A0FE0D03500B0A970 /* a.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = a.aiff; path = Resources/a.aiff; sourceTree = "<group>"; };
 		DFB5CC8B0FE0D03500B0A970 /* b.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = b.aiff; path = Resources/b.aiff; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				DFB5CCC10FE0D22F00B0A970 /* AVFoundation.framework in Frameworks */,
+				D54FE04A0FF80C700051B11B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +187,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D54FE0490FF80C700051B11B /* AudioToolbox.framework */,
 				DFB5CCC00FE0D22F00B0A970 /* AVFoundation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,

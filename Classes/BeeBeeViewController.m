@@ -7,6 +7,7 @@
 //
 
 #import "BeeBeeViewController.h"
+#import <AudioToolbox/AudioServices.h>
 #import <AVFoundation/AVAudioPlayer.h>
 
 @implementation BeeBeeViewController
@@ -18,9 +19,12 @@
 }
 
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+	if (usingHeadphones)
+		return NO;
+
 	AVAudioPlayer *player = [players objectForKey:string];
-	
 	if (!player)
 	{
 		NSString *soundFilePath =
@@ -70,9 +74,51 @@
 }
 
 
+- (void)disableHeadphones
+{
+	CFStringRef audioRoute;
+	UInt32 propertySize = sizeof(CFStringRef);	
+
+	AudioSessionGetProperty(kAudioSessionProperty_AudioRoute,
+							&propertySize,
+							&audioRoute);
+
+	usingHeadphones = (kCFCompareEqualTo != CFStringCompare(audioRoute, (CFStringRef)@"Speaker", 0));
+	
+	if (usingHeadphones)
+	{
+		[textField resignFirstResponder];
+		UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"Headphones detected" message:@"Please disconnect headphones before continuing" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] autorelease];
+		[alert show];
+	}
+	else
+	{
+		[textField becomeFirstResponder];
+	}
+}
+
+
+void audioRouteChangeListenerCallback(void                   *inUserData,
+									  AudioSessionPropertyID inPropertyID,
+									  UInt32                 inPropertyValueSize,
+									  const void             *inPropertyValue)
+{
+	BeeBeeViewController* controller = (BeeBeeViewController*)inUserData;
+	[controller disableHeadphones];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	AudioSessionInitialize(NULL, NULL, NULL, NULL);
+	UInt32 sessionCategory = kAudioSessionCategory_UserInterfaceSoundEffects;
+	AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+	AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, audioRouteChangeListenerCallback, self);
+	AudioSessionSetActive(true);
+
+	[self disableHeadphones];
+	
 	players = [[NSMutableDictionary alloc] init];
 	front = first;
 	back = second;
@@ -82,8 +128,6 @@
 	smaller = CGAffineTransformScale(normal, 0.1, 0.1);
 
 	[second setTransform:smaller];
-	
-	[textField becomeFirstResponder];
 }
 
 

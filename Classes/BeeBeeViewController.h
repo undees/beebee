@@ -11,7 +11,9 @@
 @interface BeeBeeViewController : UIViewController<UITextFieldDelegate> {
 	IBOutlet UITextField *textField;
 	IBOutlet UILabel *first, *second;
-	
+
+	BOOL usingHeadphones;
+
 	UILabel *front, *back;
 	CGAffineTransform normal, bigger, smaller;
 	NSMutableDictionary *players;
