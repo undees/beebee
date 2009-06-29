@@ -52,6 +52,11 @@
 
 	[back setText:[string capitalizedString]];
 
+	CGFloat hue        =             (CGFloat)arc4random() / (CGFloat)UINT_MAX;
+	CGFloat saturation = 0.5 + 0.5 * (CGFloat)arc4random() / (CGFloat)UINT_MAX;
+	CGFloat brightness =       0.8 * (CGFloat)arc4random() / (CGFloat)UINT_MAX;
+	[back setTextColor:[UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0]];
+	
 	[UIView beginAnimations:@"labelAnimations" context:nil];
 	[UIView setAnimationDuration:0.3];
 	[UIView setAnimationDelegate:self];
@@ -133,6 +138,10 @@ void audioRouteChangeListenerCallback(void                   *inUserData,
 	smaller = CGAffineTransformScale(normal, 0.1, 0.1);
 
 	[second setTransform:smaller];
+
+	UIFont* font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:144.0];
+	first.font = font;
+	second.font = font;
 }
 
 
